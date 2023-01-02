@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keep Notes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <nav class="flex justify-between w-full md:h-auto m-0 p-3 md:p-4 bg-[#212529] md:space-x-8 fixed z-50" id="nav">
+    <a class="md:w-64 text-white text-lg md:text-xl font-medium no-underline" href="#">Keep Notes</a>
+
+    <div class="absolute right-3 top-4 text-white flex md:hidden items-center text-xl space-x-4">
+      <i class="fa fa-search" onclick="searchAnimation()"></i>
+      <i class="fa fa-bars" onclick="toggleNavbar()"></i>
+    </div>
+
+    <div class="w-full hidden absolute left-4 md:relative transform md:translate-y-0 md:flex justify-between items-center pr-4" id="navlinkbar">
+      <ul class="md:flex items-center mb-3 md:mb-0 space-y-2 md:space-y-0 md:space-x-4">
+        <li class="text-[#9b9d9e] hover:text-white no-underline cursor-pointer" onclick="showNote(); toggleNavbar()">Home</li>
+        <li class="text-[#9b9d9e] hover:text-white no-underline cursor-pointer" onclick="showArchive(); toggleNavbar()">Archive</li>
+        <li class="text-[#9b9d9e] hover:text-white no-underline cursor-pointer" onclick="timer(); toggleNavbar()">Timer</li>
+      </ul>
+    </div>
+    <div class="flex space-x-2 items-center">
+      <input type="search" name="search" id="search" placeholder="search..." class="hidden md:block mr-6 md:mr-0 w-40 md:w-[12rem] h-7 md:h-8 p-3 pr-1 rounded-xl" />
+      <button type="button" class="hidden md:block px-2 py-0.5 rounded-md bg-blue-600 text-white" id="searchbtn">Search</button>
+    </div>
+  </nav>
+
+  <div id="main_containor" class="main_containor pt-16">
+    <div class="p-4 md:p-10 flex flex-col items-center space-y-4">
+      <h1 class="font-semibold text-xl md:text-2xl underline mb-4">Add Notes</h1>
+      <div class="md:w-[40%]">
+        <input type="text" name="noteTitle" id="noteTitle" placeholder="Enter title" class="animate hidden h-10 w-full pl-2 border-2">
+        <textarea name="notetext" id="notetext" rows="1" cols="100" placeholder="Enter Note" class="w-full p-2 border-2"></textarea>
+      </div>
+      <button type="button" id="btn" class="animate hidden w-24 p-2 rounded-md bg-blue-500 text-white">Add Note</button>
+    </div>
+
+    <div class="mt-4 p-4 md:p-10 border-2 space-y-4" id="output">
+        <h1 id="output_header" class="text-center font-semibold text-xl md:text-2xl underline md:mb-8">Notes</h1>
+        <div id="pinNoteContainor" class="flex flex-wrap"></div>
+        <div id="noteContainor" class="flex flex-wrap"></div>
+    </div>
+  </div>
+
+  <div id="timer_containor" class="timer_containor p-4 !md:p-10 pt-20">
+      <h3 class="text-center font-semibold text-2xl underline mb-6">Set Timer</h3>
+      <div class="md:w-[30%] flex justify-center items-center py-5 space-x-2">
+        <input type="number" name="time" id="time" placeholder="time in seconds" class="h-10 w-full rounded-md pl-2 border-2" />
+        <button type="button" id="add_timer" onclick="timer()" class="w-32 p-1 rounded-md bg-blue-500 text-white">Add Timer</button>
+      </div>
+  </div>
+
+
+  <script src="keepNotes.js"></script>
+
+</body>
+
+</html>
